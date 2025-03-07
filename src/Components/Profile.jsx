@@ -9,31 +9,35 @@ const Profile = ({ data, setdata, errors }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="profile-container">
+      <h3 className="profile-heading">Profile Information</h3>
+      <div className="input-group">
         <label>Name:</label>
         <input
           type="text"
           value={name}
           onChange={(e) => handledataChange(e, "name")}
+          className="input-field"
         />
         {errors.name && <span className="error">{errors.name}</span>}
       </div>
-      <div>
-        <label>Age : </label>
+      <div className="input-group">
+        <label>Age:</label>
         <input
           type="number"
           value={age}
           onChange={(e) => handledataChange(e, "age")}
+          className="input-field"
         />
         {errors.age && <span className="error">{errors.age}</span>}
       </div>
-      <div>
+      <div className="input-group">
         <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => handledataChange(e, "email")}
+          className="input-field"
         />
         {errors.email && <span className="error">{errors.email}</span>}
       </div>
