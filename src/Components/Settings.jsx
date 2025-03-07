@@ -1,4 +1,4 @@
-const Settings = ({ data, setdata }) => {
+const Settings = ({ data, setdata, errors }) => {
   const { theme } = data;
 
   const handledatachange = (e) => {

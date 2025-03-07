@@ -1,12 +1,15 @@
-const Interests = ({ data, setdata }) => {
+const Interests = ({ data, setdata, errors }) => {
   const { interests } = data;
 
-  const handledatachange = (e,name) => {
+  const handledatachange = (e, name) => {
     setdata((prevstate) => ({
       ...prevstate,
-      interests:
+      interests: e.target.checked
+        ? [...prevstate.interests, e.target.name]
+        : prevstate.interests.filter((i) => i !== e.target.name),
     }));
   };
+  console.log(interests);
 
   return (
     <div>
@@ -16,8 +19,20 @@ const Interests = ({ data, setdata }) => {
             type="checkbox"
             name="coding"
             checked={interests.includes("coding")}
+            onChange={handledatachange}
           />
           Coding
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            name="cricket"
+            checked={interests.includes("cricket")}
+            onChange={handledatachange}
+          />
+          Cricket
         </label>
       </div>
 
@@ -27,6 +42,7 @@ const Interests = ({ data, setdata }) => {
             type="checkbox"
             name="insta"
             checked={interests.includes("insta")}
+            onChange={handledatachange}
           />
           Insta
         </label>
@@ -38,10 +54,12 @@ const Interests = ({ data, setdata }) => {
             type="checkbox"
             name="chess"
             checked={interests.includes("chess")}
+            onChange={handledatachange}
           />
           Chess
         </label>
       </div>
+      {errors.interests && <span className="error">{errors.interests}</span>}
     </div>
   );
 };
